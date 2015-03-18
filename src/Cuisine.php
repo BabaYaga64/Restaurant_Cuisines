@@ -50,7 +50,7 @@
             $cuisine_array = array();
             foreach($returned_cuisines as $cuisine) {
                 $food_type = $cuisine['food_type'];
-                $id = $cuisine['id']
+                $id = $cuisine['id'];
                 $new_cuisine = new Cuisine($food_type, $id);
                 array_push($cuisine_array, $new_cuisine);
             }
@@ -61,7 +61,7 @@
 
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM cuisine *");
+            $GLOBALS['DB']->exec("DELETE FROM cuisine *;");
         }
 
 
