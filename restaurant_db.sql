@@ -35,7 +35,7 @@ SET default_with_oids = false;
 
 CREATE TABLE cuisine (
     id integer NOT NULL,
-    food character varying
+    food_type character varying
 );
 
 
@@ -114,7 +114,7 @@ ALTER TABLE ONLY restaurants ALTER COLUMN id SET DEFAULT nextval('restaurants_id
 -- Data for Name: cuisine; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY cuisine (id, food) FROM stdin;
+COPY cuisine (id, food_type) FROM stdin;
 \.
 
 
@@ -122,7 +122,7 @@ COPY cuisine (id, food) FROM stdin;
 -- Name: cuisine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('cuisine_id_seq', 1, false);
+SELECT pg_catalog.setval('cuisine_id_seq', 5, true);
 
 
 --
