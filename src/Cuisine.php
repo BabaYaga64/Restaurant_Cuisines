@@ -39,7 +39,9 @@
         function save()
         {
 
-            $GLOBALS['DB']->exec("INSERT INTO cuisine (food_type) VALUES ('{$this->getFoodType()}');");
+            $statement = $GLOBALS['DB']->query("INSERT INTO cuisine (food_type) VALUES ('{$this->getFoodType()}') RETURNING id;");
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($result['id']);
         }
 
         static function getAll()
@@ -48,7 +50,8 @@
             $cuisine_array = array();
             foreach($returned_cuisines as $cuisine) {
                 $food_type = $cuisine['food_type'];
-                $new_cuisine = new Cuisine($food_type);
+                $id = $cuisine['id']
+                $new_cuisine = new Cuisine($food_type, $id);
                 array_push($cuisine_array, $new_cuisine);
             }
 
