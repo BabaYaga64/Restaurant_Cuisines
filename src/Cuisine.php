@@ -3,11 +3,13 @@
     class Cuisine {
 
         private $food_type;
+        private $id;
 
 
-        function __construct($food)
+        function __construct($food, $id = null)
         {
             $this->food_type = $food;
+            $this->id = $id;
         }
 
         function setFoodType($new_food_type)
@@ -18,6 +20,19 @@
         function getFoodType()
         {
             return $this->food_type;
+
+        }
+
+
+        function getId()
+        {
+            return $this->id;
+        }
+
+
+        function setId($new_id)
+        {
+            $this->id = $new_id;
 
         }
 
@@ -45,6 +60,8 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM cuisine *");
         }
+
+
     }
 
 
