@@ -50,7 +50,6 @@
         $new_cuisine->update($_POST['name']);
         $restaurants = $new_cuisine->getRestaurants();
         return $app['twig']->render('view_cuisine.twig', array('cuisine' => $new_cuisine, 'restaurant_array' => $restaurants));
-
     });
 
     //add a restaurant to a particular cuisine
@@ -89,6 +88,12 @@
 
         return $app['twig']->render('edit_cuisine.twig', array('cuisine' => $new_cuisine));
 
+    });
+
+    //search for a restaurant out of the restaurants table
+    $app->post("/search", function() use ($app) {
+
+        return $app['twig']->render('search_results.twig');
     });
 
     return $app;
