@@ -74,6 +74,7 @@
         function delete() {
             $GLOBALS['DB']->exec("DELETE FROM restaurants * WHERE id = {$this->getId()};");
         }
+        
 
         //Get a row out based on the id
         static function find($search_id)
