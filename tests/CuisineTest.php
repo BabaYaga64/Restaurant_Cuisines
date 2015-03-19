@@ -142,6 +142,30 @@
             $this->assertEquals(null, $result);
         }
 
+        function test_update() {
+
+            //arrange
+            $food = "Mexican";
+            $new_cuisine = "Mongolian";
+
+            $test_cuisine = new Cuisine($food);
+            $test_cuisine->save();
+
+            //act
+            $test_cuisine->update($new_cuisine);
+
+            //assert
+            $this->assertEquals($new_cuisine, $test_cuisine->getFoodType());
+
+
+
+
+
+
+        }
+
+
+
 
     }
 
