@@ -20,10 +20,26 @@
                 {% for restaurant in restaurant_array %}
                     <li>{{ restaurant.getName() }}</li>
                 {% endfor %}
+
+                {% if restaurant_array is empty %}
+
+                    <li>This Cuisine has no restaurants!</li>
+
+                {% endif %}
             </ul>
         </div>
 
+        <form action="/delete_cuisine" method="post">
+            <input type= "hidden" name = "cuisine_id" value="{{ cuisine.getId() }}">
+
+            <button type="submit">Delete this Cuisine</button>
+
+        </form>
+
         <div>
+            <p>  <!-- Using the url as a variable to store cuisine id -->
+                <a href="/edit_cuisine/{{ cuisine.getId()}}">Make your cuisine edits</a>
+            </p>
             <p>
                 <a href="/">Take me Home!</a>
             </p>

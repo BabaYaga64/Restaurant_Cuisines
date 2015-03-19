@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Edit Cuisine</title>
+    </head>
+    <body>
+        <h1>{{ cuisine.getFoodType }}</h1>
+
+        <form action="/cuisines/{{ cuisine.getId() }}" method="post">
+            <input type="hidden" name="_method" value="patch">
+
+            <label for="name">Update Name</label>
+            <input id="name" name="name" type="text">
+            <button type="submit">Update</button>
+
+        </form>
+    </body>
+</html>
