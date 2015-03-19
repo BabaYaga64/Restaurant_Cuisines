@@ -38,6 +38,15 @@
         {% endif %}
 
         <div>
+            <form action="/search" method="post">
+                <input type="text" name="search" placeholder="Enter your search here..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <div>
             <form action="/delete_all" method="post">
                 <button type="submit">Delete ALL Cuisines</button>
             </form>
