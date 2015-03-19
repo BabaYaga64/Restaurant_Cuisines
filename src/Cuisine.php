@@ -64,6 +64,21 @@
             $GLOBALS['DB']->exec("DELETE FROM cuisine *;");
         }
 
+        static function find($search_id)
+        {
+            $returned_cuisine = $GLOBALS['DB']->query("SELECT * FROM cuisine WHERE id = {$search_id};");
+
+            $new_cuisine = null;
+            foreach($returned_cuisine as $cuisine) {
+                $food_type = $cuisine['food_type'];
+                $id = $cuisine['id'];
+                $new_cuisine = new Cuisine($food_type, $id);
+            }
+
+            return $new_cuisine;
+
+        }
+
 
     }
 
