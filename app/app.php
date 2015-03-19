@@ -40,7 +40,7 @@
         $new_cuisine = Cuisine::find($id);
 
         //get all of our restaurants
-        $restaurants = Restaurant::getAll();
+        $restaurants = $new_cuisine->getRestaurants();
         return $app['twig']->render('view_cuisine.twig', array('cuisine' => $new_cuisine, 'restaurant_array' => $restaurants));
     });
 
@@ -48,7 +48,7 @@
     $app->patch("/cuisines/{id}", function($id) use ($app) {
         $new_cuisine = Cuisine::find($id);
         $new_cuisine->update($_POST['name']);
-        $restaurants = Restaurant::getAll();
+        $restaurants = $new_cuisine->getRestaurants();
         return $app['twig']->render('view_cuisine.twig', array('cuisine' => $new_cuisine, 'restaurant_array' => $restaurants));
 
     });
@@ -60,7 +60,7 @@
 
         $new_cuisine = Cuisine::find($_POST['cuisine_id']);
 
-        return $app['twig']->render('view_cuisine.twig', array('cuisine' => $new_cuisine, 'restaurant_array' => Restaurant::getAll()));
+        return $app['twig']->render('view_cuisine.twig', array('cuisine' => $new_cuisine, 'restaurant_array' => $new_cuisine->getRestaurants()));
 
     });
 
@@ -69,7 +69,7 @@
         Cuisine::deleteAll();
         Restaurant::deleteAll();
 
-        return $app['twig']->render('index.twig');
+        return $app['twig']->render('index.twig', array('cuisine_array' => []));
     });
 
     //delete all the restaurants out of a specific cuisine
@@ -78,7 +78,9 @@
 
         $new_cuisine->delete();
 
-        return $app['twig']->render('index.twig');
+        $cuisine_array = Cuisine::getAll();
+
+        return $app['twig']->render('index.twig', array('cuisine_array' => $cuisine_array));
     });
 
     //edit a cuisine
