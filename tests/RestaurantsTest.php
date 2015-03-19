@@ -24,7 +24,7 @@
         {
             //Arrange
             $name = "Mi Mero Mole";
-            $cuis_id = null;
+            $cuis_id = 1;
             $test_restaurant = new Restaurant($name, $cuis_id);
 
             //Act
@@ -87,8 +87,8 @@
             //arrange
             $name = "Mi Mero Mole";
             $name2 = "Red Onion";
-            $cuis_id = null;
-            $cuis_id2 = null;
+            $cuis_id = 1;
+            $cuis_id2 = 1;
 
             $test_restaurant = new Restaurant($name, $cuis_id);
             $test_restaurant2 = new Restaurant($name2, $cuis_id2);
@@ -109,8 +109,9 @@
             $name = "Burgerville";
 
             $id = 1;
-            $cuis_id = 31;
-            $test_restaurant = new Restaurant($name, $cuis_id, $id);
+            $cuis_id = 2;
+            $rating = 0;
+            $test_restaurant = new Restaurant($name, $cuis_id, $rating, $id);
 
             //Act
             $result = $test_restaurant->getId();
@@ -127,7 +128,8 @@
             $name = "Burgerville";
 
             $id = 1;
-            $test_restaurant = new Restaurant($name, $id);
+            $cuis_id = 2;
+            $test_restaurant = new Restaurant($name, $cuis_id, $id);
 
             //act
             $test_restaurant->setId(3);
@@ -143,8 +145,8 @@
             //arrange
             $name = "PhoTon";
             $name2 = "Red Onion";
-            $cuis_id = null;
-            $cuis_id2 = null;
+            $cuis_id = 1;
+            $cuis_id2 = 1;
 
             $test_restaurant = new Restaurant($name, $cuis_id);
             $test_restaurant2 = new Restaurant($name2, $cuis_id2);
@@ -200,6 +202,56 @@
 
             //assert
             $this->assertEquals($new_name, $result->getName());
+        }
+
+        function test_getRating()
+        {
+            //arrange
+            $test_restaurant = new Restaurant("Harlow", 1, 5);
+
+            //act
+            $result = $test_restaurant->getRating();
+
+            //assert
+            $this->assertEquals(5, $result);
+        }
+
+        function test_setRating()
+        {
+            //arrange
+            $test_restaurant = new Restaurant("Harlow", 1, 5);
+
+            //act
+            $test_restaurant->setRating(10);
+            $result = $test_restaurant->getRating();
+
+            //assert
+            $this->assertEquals(10, $result);
+        }
+
+        function test_getCuisineId()
+        {
+            //arrange
+            $test_restaurant = new Restaurant("Harlow", 1, 5);
+
+            //act
+            $result = $test_restaurant->getCuisineId();
+
+            //assert
+            $this->assertEquals(1, $result);
+        }
+
+        function test_setCuisineId()
+        {
+            //arrange
+            $test_restaurant = new Restaurant("Harlow", 1, 5);
+
+            //act
+            $test_restaurant->setCuisineId(2);
+            $result = $test_restaurant->getCuisineId();
+
+            //assert
+            $this->assertEquals(2, $result);
         }
 
 
