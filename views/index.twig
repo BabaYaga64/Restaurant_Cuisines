@@ -21,7 +21,8 @@
                 <ul>
                     {% for cuisine in cuisine_array %}
 
-                        <li>{{ cuisine.getFoodType() }}</li>
+                        <!-- creates a link to a specific instance of that cuisine -->
+                        <li><a href="/cuisines/{{ cuisine.getId() }}">{{ cuisine.getFoodType() }}</a></li>
 
                     {% endfor %}
 
@@ -34,8 +35,13 @@
                 There are no cuisines currently.
             </p>
 
-
         {% endif %}
+
+        <div>
+            <form action="/delete_cuisines" method="post">
+                <button type="submit">Delete ALL Cuisines</button>
+            </form>
+        </div>
 
     </body>
 </html>

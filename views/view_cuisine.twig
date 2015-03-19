@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>{{ cuisine.getFoodType }}</title>
+    </head>
+    <body>
+        <h1>{{ cuisine.getFoodType }}</h1>
+
+        <form action="/add_restaurant" method="post">
+            <input type= "hidden" name = "cuisine_id" value="{{ cuisine.getId() }}">
+
+            <label for="name">Enter a Restaurant</label>
+            <input id="name" name="name" type="text">
+
+            <button type="submit">Add your amazing restaurant!!</button>
+
+        </form>
+
+        <div>
+            <ul>
+                {% for restaurant in restaurant_array %}
+                    <li>{{ restaurant.getName() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <p>
+                <a href="/">Take me Home!</a>
+            </p>
+        </div>
+
+    </body>
+</html>
