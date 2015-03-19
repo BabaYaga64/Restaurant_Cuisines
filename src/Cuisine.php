@@ -36,6 +36,12 @@
 
         }
 
+        function update($new_food_type)
+        {
+            $GLOBALS['DB']->exec("UPDATE cuisine SET food_type = '{$new_food_type}' WHERE id = {$this->getId()};");
+            $this->setFoodType($new_food_type);
+        }
+
         function save()
         {
 

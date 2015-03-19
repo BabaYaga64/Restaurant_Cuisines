@@ -156,17 +156,7 @@
 
             //assert
             $this->assertEquals($new_cuisine, $test_cuisine->getFoodType());
-
-
-
-
-
-
         }
-
-
-
-
     }
 
 ?>
