@@ -110,8 +110,39 @@
             //assert
             $result = $test_cuisine->getId();
             $this->assertEquals(3, $result);
-
         }
+
+        //find a particular Cuisine class
+        function test_find()
+        {
+            //arrange
+            $food = "Belgium";
+
+            $test_cuisine = new Cuisine($food);
+            $test_cuisine->save();
+
+            $test_id = $test_cuisine->getId();
+
+            //act
+            $result = Cuisine::find($test_id);
+
+            //assert
+            $this->assertEquals($test_cuisine, $result);
+        }
+
+        function test_findNull()
+        {
+            //arrange
+            $id = 20000;
+
+            //act
+            $result = Cuisine::find($id);
+
+            //assert
+            $this->assertEquals(null, $result);
+        }
+
+
     }
 
 ?>
