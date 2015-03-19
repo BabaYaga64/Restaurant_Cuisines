@@ -45,9 +45,30 @@
             $this->setId($result['id']);
         }
 
-        static function find()
+        function update($new_name)
         {
+            $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
 
+        //deletes single object based on current iteration of id
+        function delete() {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants * WHERE id = {$this->getId()};");
+        }
+
+        //Get a row out based on the id
+        static function find($search_id)
+        {
+            $row_out = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE id = {$search_id};");
+            $new_restaurant = null;
+            foreach($row_out as $out) {
+                $id = $out['id'];
+                $name = $out['name'];
+                $cuis_id = $out['cuisine_id'];
+                $new_restaurant = new Restaurant($name, $cuis_id, $id);
+
+            }
+            return $new_restaurant;
         }
 
         static function getAll()

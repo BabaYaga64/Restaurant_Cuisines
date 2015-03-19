@@ -61,6 +61,25 @@
 
         }
 
+        //Delete a single restaurant
+        function test_delete()
+        {
+            //arrange
+            $cuis_id = 6;
+            $test_restaurant = new Restaurant("Charlie Kangs", 6);
+            $test_restaurant->save();
+
+
+            //act
+            $test_restaurant->delete();
+
+            $test_restaurant = Restaurant::getAll();
+
+            //assert
+            $this->assertEquals([], $test_restaurant);
+
+        }
+
 
         //Pulls information out of database and recreates restaurant objects.
         function test_getAll()
@@ -119,25 +138,71 @@
 
         }
 
-        // function test_find()
-        // {
-        //     //arrange
-        //     $name = "PhoTon";
-        //     $name2 = "Red Onion";
-        //     $cuis_id = null;
-        //     $cuis_id2 = null;
-        //
-        //     $test_restaurant = new Restaurant($name, $cuis_id);
-        //     $test_restaurant2 = new Restaurant($name2, $cuis_id2);
-        //     $test_restaurant->save();
-        //     $test_restaurant2->save();
-        //
-        //     //act
-        //     $result = Restaurant::find($test_restaurant->getId());
-        //
-        //     //assert
-        //     $this->assertEquals($test_restaurant, $result);
-        // }
+        function test_find()
+        {
+            //arrange
+            $name = "PhoTon";
+            $name2 = "Red Onion";
+            $cuis_id = null;
+            $cuis_id2 = null;
+
+            $test_restaurant = new Restaurant($name, $cuis_id);
+            $test_restaurant2 = new Restaurant($name2, $cuis_id2);
+            $test_restaurant->save();
+            $test_restaurant2->save();
+
+            //act
+            $result = Restaurant::find($test_restaurant->getId());
+
+            //assert
+            $this->assertEquals($test_restaurant, $result);
+        }
+
+        //test if we search for an id that doesn't exist
+        function test_findNull()
+        {
+            //arrange
+            $id = 20000;
+
+            //act
+            $result = Restaurant::find($id);
+
+            //assert
+            $this->assertEquals(null, $result);
+        }
+
+        //test if we can update a single restaurant
+        function test_update()
+        {
+            //arrange
+            $test_restaurant = new Restaurant("Mi Mero Mole", 1);
+            $new_name = "Mi Mole";
+
+            //act
+            $test_restaurant->update($new_name);
+            $result = $test_restaurant->getName();
+
+            //assert
+            $this->assertEquals($new_name, $result);
+        }
+
+        function test_updateDatabase()
+        {
+            //arrange
+            $test_restaurant = new Restaurant("Harlow", 2);
+            $test_restaurant->save();
+            $new_name = "The Harlow";
+
+            //act
+            $test_restaurant->update($new_name);
+            $id = $test_restaurant->getId();
+            $result = Restaurant::find($id);
+
+            //assert
+            $this->assertEquals($new_name, $result->getName());
+        }
+
+
     }
 
 ?>
