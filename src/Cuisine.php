@@ -20,7 +20,6 @@
         function getFoodType()
         {
             return $this->food_type;
-
         }
 
 

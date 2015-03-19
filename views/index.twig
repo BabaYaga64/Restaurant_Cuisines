@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cuisines</title>
+    </head>
+    <body>
+        <h1>Enter your Cuisines</h1>
+        <h3>then add your favorite restaurants to each!</h3>
+
+        <form action="/cuisines" method="post">
+            <label for="cuisine">Enter a new Cuisine</label>
+            <input type="text" name="cuisine" required>
+
+            <button type="submit">Add Cuisine</button>
+        </form>
+
+        {% if cuisine_array is not empty %}
+
+            <div>
+                <ul>
+                    {% for cuisine in cuisine_array %}
+
+                        <li>{{ cuisine.getFoodType() }}</li>
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+        {% else %}
+
+            <p>
+                There are no cuisines currently.
+            </p>
+
+
+        {% endif %}
+
+    </body>
+</html>
