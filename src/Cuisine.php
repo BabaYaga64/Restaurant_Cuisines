@@ -50,6 +50,11 @@
             $this->setId($result['id']);
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM cuisine * WHERE id = {$this->getId()};");
+        }
+
         static function getAll()
         {
             $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisine;");

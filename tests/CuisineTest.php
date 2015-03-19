@@ -142,6 +142,7 @@
             $this->assertEquals(null, $result);
         }
 
+        //test to see if we can update a single object
         function test_update() {
 
             //arrange
@@ -156,6 +157,21 @@
 
             //assert
             $this->assertEquals($new_cuisine, $test_cuisine->getFoodType());
+        }
+
+        //test to see if we can delete single objects
+        function test_delete() {
+
+            //arrange
+            $test_cuisine = new Cuisine("American");
+            $test_cuisine->save();
+
+            //act
+            $test_cuisine->delete();
+
+            $result = Cuisine::getAll();
+            //assert
+            $this->assertEquals([], $result);
         }
     }
 
