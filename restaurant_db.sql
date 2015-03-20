@@ -69,7 +69,8 @@ ALTER SEQUENCE cuisine_id_seq OWNED BY cuisine.id;
 CREATE TABLE restaurants (
     id integer NOT NULL,
     name character varying,
-    cuisine_id integer
+    cuisine_id integer,
+    rating integer
 );
 
 
@@ -122,14 +123,14 @@ COPY cuisine (id, food_type) FROM stdin;
 -- Name: cuisine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('cuisine_id_seq', 5, true);
+SELECT pg_catalog.setval('cuisine_id_seq', 26, true);
 
 
 --
 -- Data for Name: restaurants; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY restaurants (id, name, cuisine_id) FROM stdin;
+COPY restaurants (id, name, cuisine_id, rating) FROM stdin;
 \.
 
 
@@ -137,7 +138,7 @@ COPY restaurants (id, name, cuisine_id) FROM stdin;
 -- Name: restaurants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('restaurants_id_seq', 1, false);
+SELECT pg_catalog.setval('restaurants_id_seq', 20, true);
 
 
 --
