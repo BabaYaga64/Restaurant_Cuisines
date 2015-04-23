@@ -8,6 +8,13 @@
 
 Users can add their favorite restaurants by the type of cuisine that they offer. This is a One-to-Many database relation with one cuisine being at many restaurants.
 
+##### Setup Instructions
+1. Clone GitHub repository
+2. Launch Postgres and PSQL shells in terminal
+3. Import database into PSQL shell so that you have it on your local machine
+4. Launch PHP Server
+5. Navigate to root path in project folder 
+
 ##### Technology
 
 * PHP
